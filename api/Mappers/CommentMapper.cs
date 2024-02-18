@@ -10,7 +10,7 @@ namespace api.Mappers
 {
     public static class CommentMapper
     {
-        public static CommentDto ToCommentDto(this Comment comment)
+        public static CommentDto ToCommentDto(this CommentModel comment)
         {
             return new CommentDto()
             {
@@ -22,9 +22,9 @@ namespace api.Mappers
             };
         }
 
-        public static Comment ToCommentFromCreate(this CreateCommentRequestDto comment, int stockId)
+        public static CommentModel ToCommentFromCreate(this CreateCommentRequestDto comment, int stockId)
         {
-            return new Comment()
+            return new CommentModel()
             {
                 Title = comment.Title,
                 Content = comment.Content,
@@ -32,9 +32,9 @@ namespace api.Mappers
             };
         }
 
-        public static Comment ToCommentFromUpdate(this UpdateCommentRequestDto comment)
+        public static CommentModel ToCommentFromUpdate(this UpdateCommentRequestDto comment)
         {
-            return new Comment()
+            return new CommentModel()
             {
                 Title = comment.Title,
                 Content = comment.Content
