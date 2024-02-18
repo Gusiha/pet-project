@@ -31,15 +31,15 @@ namespace api.Repository
 
             if (portfolioModel == null)
                 return null;
-            
+
             _context.Portfolios.Remove(portfolioModel);
             await _context.SaveChangesAsync();
             return portfolioModel;
         }
 
-        public Task<List<StockModel>> GetUserPortfolio(AppUser user)
+        public async Task<List<StockModel>> GetUserPortfolio(AppUser user)
         {
-            return _context.Portfolios.Where(u => u.AppUserId == user.Id).Select(stock => new StockModel()
+            return await _context.Portfolios.Where(u => u.AppUserId == user.Id).Select(stock => new StockModel()
             {
                 Id = stock.StockId,
                 Symbol = stock.Stock.Symbol,
